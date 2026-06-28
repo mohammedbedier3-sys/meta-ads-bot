@@ -1,43 +1,43 @@
-# Meta Ads AI Bot
+# Meta Ads WhatsApp Bot
 
-A conversational AI bot that connects your Meta Ads (Facebook & Instagram) account to Claude, giving you an intelligent analyst for your campaigns.
+A WhatsApp bot powered by Claude that lets you manage Meta (Facebook/Instagram) ad campaigns via chat. Deploy on Railway.
 
-## What it does
+## Features
 
-- Fetches live campaign data from the Meta Ads Graph API
-- Lets you ask natural-language questions about your campaigns
-- Provides performance analysis, optimization recommendations, and anomaly detection
-- Can take actions: pause/enable campaigns, update budgets
+- View all ad accounts, campaigns, and performance metrics
+- Pause / resume campaigns
+- Update daily or lifetime budgets
+- Search campaigns by name
+- Responds in Arabic or English
+- Secured to your WhatsApp number only
 
-## Setup
+## Environment Variables
 
-1. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+| Variable | Description |
+|----------|-------------|
+| `META_ACCESS_TOKEN` | Meta Ads Graph API access token |
+| `ANTHROPIC_API_KEY` | Anthropic API key |
+| `WHATSAPP_TOKEN` | WhatsApp Business API token |
+| `WHATSAPP_PHONE_NUMBER_ID` | WhatsApp phone number ID |
+| `WEBHOOK_VERIFY_TOKEN` | Any secret string for webhook verification |
+| `ALLOWED_WHATSAPP_NUMBER` | Your WhatsApp number (e.g. 201012345678) |
 
-2. **Configure credentials** — copy `.env.example` to `.env` and fill in:
-   - `META_APP_ID`, `META_APP_SECRET`, `META_ACCESS_TOKEN` — from your Meta App dashboard
-   - `ANTHROPIC_API_KEY` — from [console.anthropic.com](https://console.anthropic.com)
+## Deploy on Railway
 
-3. **Run**
-   ```bash
-   python bot.py
-   ```
+1. Push this repo to GitHub
+2. Create a new Railway project from the repo
+3. Set all environment variables above
+4. Railway will build and deploy automatically
+5. Set the webhook URL in Meta App Dashboard: `https://your-app.railway.app/webhook`
 
-## Example questions
+## Ad Accounts
 
-- "Show me all my ad accounts"
-- "How are my campaigns performing this month?"
-- "Which campaign has the highest CPC?"
-- "Pause campaign 120200..."
-- "What's my total spend last 7 days?"
+15 accounts pre-configured in `tools.py` (Limitless, Eva Pharma, Bellcom, Eva Senses, TC Eva, Eva Fluoro, Eva One Cream, Grounds 2, Dopay, Teem App, Eman Hylooz, Verve, Grounds, Now SA, Axelerate).
 
-## Files
+## Example WhatsApp Messages
 
-| File | Purpose |
-|------|---------|
-| `bot.py` | Main conversational bot with Claude tool-use loop |
-| `meta_ads.py` | Meta Graph API client |
-| `requirements.txt` | Python dependencies |
-| `.env` | Your credentials (not committed) |
+- "show me eva pharma campaigns"
+- "what's the spend on limitless this month?"
+- "pause campaign 120200xxx"
+- "set dopay daily budget to 500 EGP"
+- "اعرض حملات grounds"
